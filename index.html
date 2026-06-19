@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#6c4ad6">
+<title>LA Trip 2026 ☀️ Eternal Sunshine</title>
+<!-- iPhone / home screen icon -->
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="manifest" href="site.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="LA Trip 2026">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --violet:#6c4ad6; --violet-deep:#4b2ea3; --lav:#b9a7f0; --lav-soft:#e9e3fb;
+  --pink:#f3c4e6; --peach:#ffd9c2; --sky:#cfe3ff; --cream:#fff7ef;
+  --ink:#2c2150; --ink-soft:#6b6088; --line:rgba(108,74,214,.14);
+  --card:rgba(255,255,255,.72); --shadow:0 10px 40px -12px rgba(75,46,163,.35);
+  --grad:linear-gradient(135deg,#c6b3f5 0%,#f3c4e6 38%,#ffd9c2 72%,#cfe3ff 100%);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Zen Maru Gothic','Outfit',system-ui,sans-serif;
+  color:var(--ink); line-height:1.6; min-height:100vh;
+  background:
+    radial-gradient(1200px 600px at 10% -5%, #e7dbff 0%, transparent 55%),
+    radial-gradient(1000px 700px at 110% 0%, #ffe1d2 0%, transparent 50%),
+    radial-gradient(900px 700px at 50% 120%, #d3e6ff 0%, transparent 55%),
+    linear-gradient(180deg,#fbf8ff 0%,#fdf3f8 100%);
+  background-attachment:fixed;
+}
+.wrap{max-width:1080px;margin:0 auto;padding:0 18px 80px}
+
+/* HERO */
+.hero{position:relative;text-align:center;padding:54px 20px 30px;overflow:hidden}
+.hero .sun{
+  position:absolute;top:-90px;left:50%;transform:translateX(-50%);
+  width:340px;height:340px;border-radius:50%;
+  background:radial-gradient(circle at 50% 40%,#fff3da 0%,#ffd9b8 35%,#f4b9d8 65%,transparent 72%);
+  filter:blur(6px);opacity:.85;z-index:0;
+}
+.hero>*{position:relative;z-index:1}
+.eyebrow{font-family:'Outfit';letter-spacing:.42em;text-transform:uppercase;
+  font-size:12px;font-weight:600;color:var(--violet);margin-bottom:14px}
+.hero h1{font-family:'Outfit';font-weight:800;line-height:1.02;
+  font-size:clamp(38px,8vw,76px);letter-spacing:-.02em;
+  background:linear-gradient(120deg,#4b2ea3,#8a5cf0 45%,#e08bc6 80%);
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .sub{font-size:clamp(15px,2.6vw,19px);color:var(--ink-soft);margin-top:10px;font-weight:500}
+.hero .heart{font-size:30px;display:block;margin-bottom:6px}
+
+/* countdown */
+.count{display:inline-flex;gap:10px;margin-top:24px;flex-wrap:wrap;justify-content:center}
+.count .cell{background:var(--card);backdrop-filter:blur(10px);border:1px solid var(--line);
+  border-radius:18px;padding:12px 16px;min-width:74px;box-shadow:var(--shadow)}
+.count .num{font-family:'Outfit';font-weight:800;font-size:30px;color:var(--violet-deep);line-height:1}
+.count .lbl{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-soft);margin-top:4px}
+.count.gone .num{font-size:18px}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:50;margin:26px 0 30px;
+  background:rgba(255,255,255,.55);backdrop-filter:blur(16px);
+  border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);
+  padding:8px;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+nav::-webkit-scrollbar{display:none}
+nav button{flex:0 0 auto;border:none;background:transparent;cursor:pointer;
+  font-family:inherit;font-weight:700;font-size:14px;color:var(--ink-soft);
+  padding:10px 16px;border-radius:15px;white-space:nowrap;transition:.25s;display:flex;align-items:center;gap:7px}
+nav button:hover{color:var(--violet)}
+nav button.on{background:linear-gradient(120deg,#7a55e0,#b07ae8);color:#fff;box-shadow:0 8px 20px -8px rgba(108,74,214,.6)}
+
+/* SECTIONS */
+section{display:none;animation:rise .5s cubic-bezier(.2,.8,.2,1)}
+section.show{display:block}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.sec-h{display:flex;align-items:center;gap:12px;margin:4px 0 20px}
+.sec-h .em{font-size:30px}
+.sec-h h2{font-family:'Outfit';font-weight:800;font-size:clamp(24px,4.4vw,34px);color:var(--violet-deep);letter-spacing:-.01em}
+.sec-h .note{font-size:13px;color:var(--ink-soft);font-weight:500}
+
+/* CARD */
+.card{background:var(--card);backdrop-filter:blur(10px);border:1px solid var(--line);
+  border-radius:24px;box-shadow:var(--shadow);padding:22px 22px;margin-bottom:22px}
+.daytag{display:inline-flex;align-items:center;gap:10px;margin-bottom:16px}
+.daytag .pill{font-family:'Outfit';font-weight:800;font-size:15px;color:#fff;
+  background:linear-gradient(120deg,#7a55e0,#cf86d4);padding:7px 16px;border-radius:999px;letter-spacing:.02em}
+.daytag .ttl{font-weight:700;font-size:18px;color:var(--ink)}
+.daytag .wd{font-size:12px;color:var(--ink-soft);background:var(--lav-soft);padding:3px 10px;border-radius:999px;font-weight:700}
+
+/* TABLE */
+table{width:100%;border-collapse:collapse;font-size:14.5px}
+.itin th{text-align:left;font-family:'Outfit';font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--violet);font-weight:700;padding:0 10px 10px;border-bottom:2px solid var(--line)}
+.itin td{padding:13px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+.itin tr:last-child td{border-bottom:none}
+.itin tr:hover td{background:rgba(185,167,240,.1)}
+.t-time{font-family:'Outfit';font-weight:700;color:var(--violet-deep);white-space:nowrap;font-size:15px}
+.t-ic{font-size:18px;width:26px;text-align:center}
+.t-plan{font-weight:600}
+.t-plan small{display:block;color:var(--ink-soft);font-weight:500;font-size:12.5px;margin-top:2px}
+a.spot{color:var(--violet);font-weight:700;text-decoration:none;border-bottom:1.5px dashed var(--lav);transition:.2s;white-space:nowrap}
+a.spot:hover{color:var(--violet-deep);border-bottom-style:solid}
+a.spot::after{content:" ↗";font-size:11px;opacity:.6}
+.hi{background:linear-gradient(120deg,#ffe9f6,#efe6ff);border-radius:12px}
+.hi td{border-color:transparent !important}
+.badge{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px;margin-left:6px;vertical-align:middle}
+.b-main{background:#f6e0ef;color:#b03b8e}
+.b-live{background:#e7defb;color:#6c3fd0}
+
+/* generic table for food/costs */
+.gt{width:100%;border-collapse:collapse;font-size:14.5px}
+.gt th{text-align:left;font-family:'Outfit';font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--violet);font-weight:700;padding:0 12px 11px;border-bottom:2px solid var(--line)}
+.gt td{padding:13px 12px;border-bottom:1px solid var(--line)}
+.gt tr:last-child td{border-bottom:none}
+.gt tr:hover td{background:rgba(185,167,240,.1)}
+.gt .r{text-align:right;font-family:'Outfit';font-weight:700;white-space:nowrap}
+.gt tfoot td{border-top:2px solid var(--line);font-weight:800;color:var(--violet-deep);font-size:16px;border-bottom:none}
+
+/* info grid */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:680px){.grid2{grid-template-columns:1fr}}
+.kv{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px dashed var(--line);font-size:14.5px}
+.kv:last-child{border-bottom:none}
+.kv .k{color:var(--ink-soft);font-weight:600}
+.kv .v{font-weight:700;text-align:right}
+.legchip{display:inline-flex;align-items:center;gap:8px;background:var(--lav-soft);
+  color:var(--violet-deep);font-family:'Outfit';font-weight:700;font-size:13px;padding:5px 13px;border-radius:999px;margin-bottom:14px}
+
+/* concert ticket */
+.ticket{background:linear-gradient(135deg,#2a1856,#5b32b8 60%,#9b54c9);
+  color:#fff;border-radius:26px;padding:28px;position:relative;overflow:hidden;box-shadow:0 18px 50px -18px rgba(75,46,163,.7)}
+.ticket::before{content:"";position:absolute;inset:0;
+  background:radial-gradient(400px 200px at 80% 0%,rgba(255,200,240,.4),transparent 60%);}
+.ticket>*{position:relative;z-index:1}
+.ticket .ev{font-family:'Outfit';font-weight:800;font-size:26px;line-height:1.15}
+.ticket .vn{opacity:.85;margin-top:6px;font-weight:600}
+.ticket .seatrow{display:flex;gap:22px;margin-top:22px;flex-wrap:wrap}
+.ticket .seatrow div .s{font-family:'Outfit';font-weight:800;font-size:24px}
+.ticket .seatrow div .l{font-size:11px;letter-spacing:.18em;text-transform:uppercase;opacity:.8}
+.ticket .perf{margin-top:18px;font-size:13px;opacity:.85;border-top:1px dashed rgba(255,255,255,.35);padding-top:14px}
+
+/* checklist */
+.checks{list-style:none}
+.checks li{display:flex;align-items:center;gap:12px;padding:12px 4px;border-bottom:1px solid var(--line);font-size:15px;font-weight:600;cursor:pointer;user-select:none}
+.checks li:last-child{border-bottom:none}
+.checks .box{width:24px;height:24px;border-radius:8px;border:2px solid var(--lav);
+  flex:0 0 auto;display:grid;place-items:center;color:#fff;transition:.2s;font-size:14px}
+.checks li.done .box{background:linear-gradient(120deg,#7a55e0,#cf86d4);border-color:transparent}
+.checks li.done span.txt{text-decoration:line-through;color:var(--ink-soft)}
+.checks .box::after{content:"✓";opacity:0;transition:.2s}
+.checks li.done .box::after{opacity:1}
+.sub-h{font-family:'Outfit';font-weight:800;color:var(--violet);font-size:13px;letter-spacing:.12em;text-transform:uppercase;margin:6px 0 4px}
+
+.alert{background:linear-gradient(120deg,#fff3df,#ffe8f1);border:1px solid #f3d3b8;
+  border-radius:18px;padding:16px 18px;margin-bottom:16px;font-size:14px}
+.alert b{color:#b85c1a}
+.muted{color:var(--ink-soft);font-size:13px}
+.tt{font-family:'Outfit';font-weight:700}
+footer{text-align:center;color:var(--ink-soft);font-size:12.5px;margin-top:40px;line-height:1.8}
+footer .h{color:#d579b8}
+.priv{font-size:11.5px;color:var(--ink-soft);background:var(--lav-soft);border-radius:12px;padding:8px 12px;display:inline-block;margin-top:10px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="sun"></div>
+    <span class="heart">💜</span>
+    <div class="eyebrow">Eternal Sunshine · Los Angeles</div>
+    <h1>LA Trip 2026</h1>
+    <p class="sub">2026.06.20 – 06.22 &nbsp;|&nbsp; Ariana Grande @ Kia Forum 🎤</p>
+    <div class="count" id="count"></div>
+  </header>
+
+  <nav id="nav">
+    <button data-t="itin" class="on">🗓 旅程</button>
+    <button data-t="food">🍴 食事</button>
+    <button data-t="flight">✈️ 移動</button>
+    <button data-t="hotel">🏨 宿</button>
+    <button data-t="live">🎤 ライブ</button>
+    <button data-t="cost">💳 費用</button>
+    <button data-t="todo">✅ 持ち物</button>
+  </nav>
+
+  <!-- ITINERARY -->
+  <section id="itin" class="show">
+    <div class="sec-h"><span class="em">🗓</span><div><h2>Itinerary</h2><div class="note">各スポット名をタップでGoogleマップが開きます</div></div></div>
+
+    <div class="card">
+      <div class="daytag"><span class="pill">DAY 1</span><span class="ttl">6/20 到着 & アリアナ</span><span class="wd">土 SAT</span></div>
+      <table class="itin">
+        <thead><tr><th></th><th>時刻</th><th>プラン</th><th>スポット</th></tr></thead>
+        <tbody>
+          <tr><td class="t-ic">🛬</td><td class="t-time">8:20</td><td class="t-plan">LAX 到着</td><td><a class="spot" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Los+Angeles+International+Airport">LAX</a></td></tr>
+          <tr><td class="t-ic">🧳</td><td class="t-time">〜10:00</td><td class="t-plan">ホテルに荷物預け</td><td><a class="spot" target="_blank" href="https://maps.app.goo.gl/FEes2mHW4H">Motel 6 Inglewood</a></td></tr>
+          <tr><td class="t-ic">🍜</td><td class="t-time">12:00</td><td class="t-plan">UCLAランチ<small>Westwood</small></td><td><a class="spot" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Xibei+Eatery+Westwood+Los+Angeles">XIBEI EATERY</a></td></tr>
+          <tr><td class="t-ic">🥤</td><td class="t-time">13:15</td><td class="t-plan">スムージー<small>15分前倒し</small></td><td><a class="spot" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Erewhon+Beverly+Hills">Erewhon BH</a></td></tr>
+          <tr><td class="t-ic">🛍</td><td class="t-time">14:00</td><td class="t-plan">ショッピング</td><td><a class="spot" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Rodeo+Drive+Beverly+Hills">Rodeo Drive</a></td></tr>
+          <tr class="hi"><td class="t-ic">🩷</td><td class="t-time">15:00<br>〜15:45</td><td class="t-plan">Ariana pop-up<span class="badge b-main">最終日!</span><small>Rodeoから車10〜15分</small></td><td><a class="spot" target="_blank" href="https://www.google.com/maps/search/?api=1&query=8505+Santa+Monica+Blvd+West+Hollywood">8505 Santa Monica Blvd</a></td></tr>
+          <tr><td class="t-ic">😴</td><td class="t-time">〜16:45</td><td class="t-plan">ホテル戻り・軽く休憩<small>仮眠は短縮</small></td><td class="muted">—</td></tr>
+          <tr><td class="t-ic">🍗</td><td class="t-time">17:00</td><td class="t-plan">腹ごしらえ</td><td><a class="spot" target="_blank" href="https://www.google.com/maps/search/?api=1&query=El+Pollo+Loco+Century+Blvd+Inglewood">El Pollo Loco</a></td></tr>
+          <tr class="hi"><td class="t-ic">🎤</td><td class="t-time">18:00</td><td class="t-plan">開演入り<span class="badge b-live">LIVE</span><small>Ariana Grande</small></td><td><a class="spot" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Kia+Forum+Inglewood">Kia Forum</a></td></tr>
+          <tr><td class="t-ic">🍔</td><td class="t-time">〜22:30</td><td class="t-plan">夜食<small>Sepulveda・飛行機名所 🛬</small></td><td><a class="spot" target="_blank" href="https://www.google.com/maps/search/?api=1&query=In-N-Out+Burger+Sepulveda+Los+Angeles">In-N-Out</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <div class="daytag"><span class="pill">DAY 2</span><span class="ttl">6/21 ビーチ三昧</span><span class="wd">日 SUN</span></div>
+      <table class="itin">
+        <thead><tr><th></th><th>時刻</th><th>プラン</th><th>スポット</th></tr></thead>
+        <tbody>
+          <tr><td class="t-ic">🏖</td><td class="t-time">10:30</td><td class="t-plan">ニューポートビーチ<small>Balboa Peninsula</small></td><td><a class="spot" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Balboa+Peninsula+Newport+Beach">Newport Beach</a></td></tr>
+          <tr><td class="t-ic">🍔</td><td class="t-time">11:00</td><td class="t-plan">ランチ<small>Newport Center Dr</small></td><td><a class="spot" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Five+Guys+Newport+Center+Drive">Five Guys</a></td></tr>
+          <tr><td class="t-ic">🎡</td><td class="t-time">16:00</td><td class="t-plan">サンタモニカ・ピア</td><td><a class="spot" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Santa+Monica+Pier">Santa Monica Pier</a></td></tr>
+          <tr><td class="t-ic">🛹</td><td class="t-time">17:00</td><td class="t-plan">ベニスビーチ<small>ピアから徒歩3.5km</small></td><td><a class="spot" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Venice+Beach+Boardwalk">Venice Boardwalk</a></td></tr>
+          <tr class="hi"><td class="t-ic">🌅</td><td class="t-time">19:00</td><td class="t-plan">サンセット & ディナー<small>Venice / Santa Monicaの店で</small></td><td class="muted">現地で選ぶ</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <div class="daytag"><span class="pill">DAY 3</span><span class="ttl">6/22 出発</span><span class="wd">月 MON</span></div>
+      <table class="itin">
+        <thead><tr><th></th><th>時刻</th><th>プラン</th><th>スポット</th></tr></thead>
+        <tbody>
+          <tr><td class="t-ic">🚪</td><td class="t-time">8:00</td><td class="t-plan">チェックアウト</td><td class="muted">Motel 6</td></tr>
+          <tr><td class="t-ic">🍩</td><td class="t-time">8:15</td><td class="t-plan">朝食<small>24h・ホテルから5分</small></td><td><a class="spot" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Randy%27s+Donuts+Inglewood">Randy's Donuts</a></td></tr>
+          <tr><td class="t-ic">✈️</td><td class="t-time">8:45</td><td class="t-plan">飛行機が頭上を通る海岸</td><td><a class="spot" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Dockweiler+State+Beach">Dockweiler Beach</a></td></tr>
+          <tr><td class="t-ic">🛫</td><td class="t-time">9:45</td><td class="t-plan">LAX 着<small>国際線2.5〜3h前</small></td><td><a class="spot" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Los+Angeles+International+Airport">LAX</a></td></tr>
+          <tr class="hi"><td class="t-ic">🛩</td><td class="t-time">12:45</td><td class="t-plan">LAX 発<small>→ 成田 (NRT)</small></td><td class="muted">ZG733</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="alert">
+      <b>⚠️ 注意したいトレードオフ</b><br>
+      <b>① 行列リスク</b>：pop-upは最終日＋予約なしの先着順。確実なら<span class="tt">10時オープン直後</span>に先行（動線は少し戻る）。午後スロットは動線がキレイだが列は読めない。<br>
+      <b>② 仮眠が削れる</b>：機内で寝るか、El Pollo Loco後に座って休む前提で。<br>
+      <b>③ 曜日</b>：6/20=土・6/21=日・6/22=月。土曜のビバヒル/WeHoは人出多め。
+    </div>
+  </section>
+
+  <!-- FOOD -->
+  <section id="food">
+    <div class="sec-h"><span class="em">🍴</span><div><h2>食事マップ</h2><div class="note">LA ファストフード完全マップ 2026</div></div></div>
+    <div class="card">
+      <table class="gt">
+        <thead><tr><th>ジャンル</th><th>店</th><th>タイミング</th></tr></thead>
+        <tbody>
+          <tr><td>🍗 炭火チキン</td><td><a class="spot" target="_blank" href="https://www.google.com/maps/search/?api=1&query=El+Pollo+Loco+Century+Blvd+Inglewood">El Pollo Loco</a></td><td>6/20 コンサート前</td></tr>
+          <tr><td>🍔 バーガー</td><td><a class="spot" target="_blank" href="https://www.google.com/maps/search/?api=1&query=In-N-Out+Burger+Sepulveda+Los+Angeles">In-N-Out (Sepulveda)</a></td><td>6/20 夜食</td></tr>
+          <tr><td>🌭 チリバーガー</td><td><a class="spot" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Original+Tommy%27s+Hamburgers+Los+Angeles">Original Tommy's</a></td><td>6/20 夜食の別案</td></tr>
+          <tr><td>🍔 バーガー</td><td><a class="spot" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Five+Guys+Newport+Center+Drive">Five Guys (Newport)</a></td><td>6/21 昼</td></tr>
+          <tr><td>🥤 スムージー</td><td><a class="spot" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Erewhon+Beverly+Hills">Erewhon BH</a></td><td>6/20 午後</td></tr>
+          <tr><td>🍩 ドーナツ</td><td><a class="spot" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Randy%27s+Donuts+Inglewood">Randy's Donuts</a></td><td>6/22 朝</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="alert">
+      <b>🍔 夜食は In-N-Out か Tommy's のどちらか一方</b><br>
+      動線のラクさなら <span class="tt">In-N-Out</span>（ホテル/LAX激近・飛行機名所）、ディープなLAローカル感なら <span class="tt">Tommy's</span>（ダウンタウン寄りで少し遠回り）。
+    </div>
+  </section>
+
+  <!-- FLIGHT -->
+  <section id="flight">
+    <div class="sec-h"><span class="em">✈️</span><div><h2>フライト</h2><div class="note">ZIPAIR · 往復</div></div></div>
+    <div class="grid2">
+      <div class="card">
+        <span class="legchip">🛫 往路 OUTBOUND</span>
+        <div class="kv"><span class="k">日付</span><span class="v">6/20 (土)</span></div>
+        <div class="kv"><span class="k">便名</span><span class="v tt">ZG024</span></div>
+        <div class="kv"><span class="k">区間</span><span class="v">東京 NRT → LA LAX</span></div>
+        <div class="kv"><span class="k">出発</span><span class="v tt">14:35 NRT</span></div>
+        <div class="kv"><span class="k">到着</span><span class="v tt">8:25 LAX</span></div>
+        <div class="kv"><span class="k">所要</span><span class="v">9時間50分</span></div>
+      </div>
+      <div class="card">
+        <span class="legchip">🛬 復路 RETURN</span>
+        <div class="kv"><span class="k">日付</span><span class="v">6/22 (月)</span></div>
+        <div class="kv"><span class="k">便名</span><span class="v tt">ZG733</span></div>
+        <div class="kv"><span class="k">区間</span><span class="v">LA LAX → 東京 NRT</span></div>
+        <div class="kv"><span class="k">出発</span><span class="v tt">12:45 LAX</span></div>
+        <div class="kv"><span class="k">到着</span><span class="v tt">16:30 NRT (+1)</span></div>
+        <div class="kv"><span class="k">所要</span><span class="v">11時間45分</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="kv"><span class="k">クラス</span><span class="v">Standard</span></div>
+      <div class="kv"><span class="k">受託手荷物</span><span class="v">✓ 手配済み</span></div>
+      <div class="kv"><span class="k">ESTA</span><span class="v">✅ Approved（〜2028/6/6）</span></div>
+    </div>
+  </section>
+
+  <!-- HOTEL -->
+  <section id="hotel">
+    <div class="sec-h"><span class="em">🏨</span><div><h2>ホテル</h2><div class="note">Inglewood · LAX & Kia Forum 至近</div></div></div>
+    <div class="card">
+      <div class="daytag"><span class="pill">STAY</span><span class="ttl">Motel 6 Inglewood, CA</span></div>
+      <div class="kv"><span class="k">住所</span><span class="v">4123 W Century Blvd, Inglewood, CA 90304</span></div>
+      <div class="kv"><span class="k">チェックイン</span><span class="v tt">6/20 (土)</span></div>
+      <div class="kv"><span class="k">チェックアウト</span><span class="v tt">6/22 (月)</span></div>
+      <div class="kv"><span class="k">泊数</span><span class="v">2泊</span></div>
+      <div class="kv"><span class="k">部屋</span><span class="v">Deluxe / Queen 1台・禁煙・冷蔵庫</span></div>
+      <div class="kv"><span class="k">宿泊者</span><span class="v">Yuto Takahashi</span></div>
+      <div style="margin-top:16px"><a class="spot" target="_blank" href="https://maps.app.goo.gl/FEes2mHW4H">📍 Googleマップで開く</a></div>
+    </div>
+  </section>
+
+  <!-- LIVE -->
+  <section id="live">
+    <div class="sec-h"><span class="em">🎤</span><div><h2>コンサート</h2><div class="note">本命イベント 💜</div></div></div>
+    <div class="ticket">
+      <div class="vn">💜 The Eternal Sunshine Tour</div>
+      <div class="ev">Ariana Grande</div>
+      <div class="vn">Sat · Jun 20, 2026 · 8:00 PM</div>
+      <div class="vn">Kia Forum — Inglewood, California</div>
+      <div class="seatrow">
+        <div><div class="l">Section</div><div class="s">207</div></div>
+        <div><div class="l">Row</div><div class="s">20</div></div>
+        <div><div class="l">Seat</div><div class="s">1</div></div>
+      </div>
+      <div class="perf">📱 Ticketmaster SafeTix（モバイルチケット） · All sales final – no refunds or exchanges</div>
+    </div>
+    <div class="card" style="margin-top:18px">
+      <div class="kv"><span class="k">会場</span><span class="v"><a class="spot" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Kia+Forum+Inglewood">Kia Forum 📍</a></span></div>
+      <div class="kv"><span class="k">開場入り目安</span><span class="v tt">18:00</span></div>
+      <div class="kv"><span class="k">コンサート前ごはん</span><span class="v">El Pollo Loco 🍗</span></div>
+      <div class="kv"><span class="k">終演後の夜食</span><span class="v">In-N-Out 🍔</span></div>
+    </div>
+  </section>
+
+  <!-- COST -->
+  <section id="cost">
+    <div class="sec-h"><span class="em">💳</span><div><h2>費用まとめ</h2><div class="note">単位: 円（概算）</div></div></div>
+    <div class="card">
+      <table class="gt">
+        <thead><tr><th>項目</th><th class="r">金額</th><th class="r">支払い</th></tr></thead>
+        <tbody>
+          <tr><td>✈️ 飛行機代</td><td class="r">¥180,484</td><td class="r">完 2026/05</td></tr>
+          <tr><td>🎫 チケット代</td><td class="r">¥180,000</td><td class="r">完 2026/05</td></tr>
+          <tr><td>🏨 ホテル代</td><td class="r">¥44,000</td><td class="r">2026/07</td></tr>
+          <tr><td>🧳 受託手荷物</td><td class="r">¥24,935</td><td class="r">2026/07</td></tr>
+          <tr><td>🐯 LSU グッズ</td><td class="r">¥17,000</td><td class="r">2026/07</td></tr>
+          <tr><td>📦 Amazon</td><td class="r">¥6,600</td><td class="r">2026/07</td></tr>
+        </tbody>
+        <tfoot><tr><td>合計</td><td class="r">¥453,019</td><td></td></tr></tfoot>
+      </table>
+    </div>
+  </section>
+
+  <!-- TODO -->
+  <section id="todo">
+    <div class="sec-h"><span class="em">✅</span><div><h2>持ち物・タスク</h2><div class="note">タップでチェック（端末に保存）</div></div></div>
+    <div class="card">
+      <div class="sub-h">出発前</div>
+      <ul class="checks" data-key="pre">
+        <li data-done="1"><span class="box"></span><span class="txt">ESTA（承認済み ✅）</span></li>
+        <li><span class="box"></span><span class="txt">モバイルチケット（Ticketmaster）をウォレットに追加</span></li>
+        <li><span class="box"></span><span class="txt">パスポート・財布・スマホ充電器</span></li>
+      </ul>
+      <div class="sub-h" style="margin-top:18px">現地で買う / 受け取る</div>
+      <ul class="checks" data-key="buy">
+        <li><span class="box"></span><span class="txt">LSU グッズ受け取り</span></li>
+        <li><span class="box"></span><span class="txt">カウボーイハット 🤠</span></li>
+        <li><span class="box"></span><span class="txt">ブーツ 👢</span></li>
+        <li><span class="box"></span><span class="txt">Newport Beach 散策</span></li>
+      </ul>
+      <div class="sub-h" style="margin-top:18px">欲しいものメモ（LSU / Morgan Wallen）</div>
+      <ul class="checks" data-key="wish">
+        <li><span class="box"></span><span class="txt">Navy LSU Campus Americana Tee</span></li>
+        <li><span class="box"></span><span class="txt">Cream LSU Landscape Shield Tee</span></li>
+        <li><span class="box"></span><span class="txt">Purple LSU Comfort Colors OHT Camo Tee</span></li>
+        <li><span class="box"></span><span class="txt">Black LSU Comfort Colors OHT Camo Tee</span></li>
+        <li><span class="box"></span><span class="txt">Nike Heather Gray LSU Primetime Tee</span></li>
+        <li><span class="box"></span><span class="txt">Morgan Wallen Tee</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    Made with <span class="h">💜</span> for an Eternal Sunshine trip · Los Angeles 2026<br>
+    <span class="priv">🔒 パスポート番号・生年月日・予約番号・カード情報などの機微情報は公開版から除外しています</span>
+  </footer>
+
+</div>
+
+<script>
+// ---- countdown to departure 2026-06-20 14:35 JST ----
+const target = new Date('2026-06-20T14:35:00+09:00').getTime();
+const cEl = document.getElementById('count');
+function tick(){
+  const d = target - Date.now();
+  if(d <= 0){ cEl.classList.add('gone'); cEl.innerHTML='<div class="cell"><div class="num">✈️ いってらっしゃい！</div><div class="lbl">Bon Voyage</div></div>'; return; }
+  const day=Math.floor(d/864e5), h=Math.floor(d%864e5/36e5), m=Math.floor(d%36e5/6e4), s=Math.floor(d%6e4/1e3);
+  const cell=(n,l)=>`<div class="cell"><div class="num">${n}</div><div class="lbl">${l}</div></div>`;
+  cEl.innerHTML=cell(day,'Days')+cell(h,'Hours')+cell(m,'Min')+cell(s,'Sec');
+}
+tick(); setInterval(tick,1000);
+
+// ---- tabs ----
+const nav=document.getElementById('nav');
+nav.addEventListener('click',e=>{
+  const b=e.target.closest('button'); if(!b)return;
+  nav.querySelectorAll('button').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on');
+  document.querySelectorAll('section').forEach(s=>s.classList.remove('show'));
+  document.getElementById(b.dataset.t).classList.add('show');
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+
+// ---- checklist with localStorage ----
+document.querySelectorAll('.checks').forEach(ul=>{
+  const key='la2026-'+ul.dataset.key;
+  let saved={}; try{saved=JSON.parse(localStorage.getItem(key)||'{}')}catch(e){}
+  [...ul.children].forEach((li,i)=>{
+    if(saved[i] ?? (li.dataset.done==='1')) li.classList.add('done');
+    li.addEventListener('click',()=>{
+      li.classList.toggle('done');
+      const st={}; [...ul.children].forEach((x,j)=>st[j]=x.classList.contains('done'));
+      try{localStorage.setItem(key,JSON.stringify(st))}catch(e){}
+    });
+  });
+});
+</script>
+</body>
+</html>
